@@ -103,9 +103,9 @@ export default function News() {
     ];
 
 
-    const renderAuthor = (article: any, inline: boolean = false) => {
+    const renderAuthor = (article: any, inline: boolean = false, textColor: string = 'white') => {
         return (
-            <div className={`flex text-white gap-2 mt-2 ${inline ? 'flex-row items-center' : 'flex-col items-start'}`}>
+            <div className={`flex text-${textColor} gap-2 mt-2 ${inline ? 'flex-row items-center' : 'flex-col items-start'}`}>
                 <Image
                     src={article.imageAuthor}
                     alt="Author"
@@ -157,24 +157,24 @@ export default function News() {
                 </div>
             </nav>
             <section className="w-full">
-                <div className="flex justify-between items-center bg-[#F4F4F4] h-[174px] py-[64px] px-[24px]">
-                    <h1 className="text-3xl font-bold">Tutti i temi</h1>
-                    <div className="flex flex-wrap gap-2 ">
+
+                <div className="bg-[#F4F4F4] md:h-[174px] py-[32px] px-[24px] flex flex-col md:flex-row justify-between items-center gap-4">
+                    <h1 className="text-3xl font-bold w-full text-left flex">Tutti i temi <Image src="/assets/icons/arrowDown.svg" className='md:hidden ml-3' alt="User Icon" width={24} height={24} /></h1>
+
+                    <div className="flex flex-wrap gap-2 justify-start md:justify-end w-full">
                         {categories.filter((category) => category !== "Tutti i temi").map((category) => (
                             <button
                                 key={category}
                                 className={`px-4 py-2 border border-black rounded shadow-[-3px_3px_0px_0px_rgb(0,0,0)] uppercase 
-                                    ${activeCategory === category
-                                        ? 'bg-red-600 text-white' // Prioritize active state
+                                        ${activeCategory === category
+                                        ? 'bg-red-600 text-white'
                                         : category === 'Ambiente'
                                             ? 'bg-[#E2F1E8]'
                                             : category === 'Mondo'
                                                 ? 'bg-[#F1DADA]'
                                                 : category === 'Politica'
                                                     ? 'bg-[#F4F1DE]'
-                                                    : 'bg-white'
-                                    }
-                                `}
+                                                    : 'bg-white'}`}
                                 onClick={() => setActiveCategory(category)}
                             >
                                 {category}
@@ -182,8 +182,142 @@ export default function News() {
                         ))}
                     </div>
                 </div>
+                <div className="block md:hidden">
+                    <div className="relative w-full h-[500px] overflow-hidden">
+                        <Image
+                            src={articles[0].imageBg!}
+                            alt={articles[0].title}
+                            fill
+                            className="w-full h-full object-cover brightness-75"
+                        />
+                        <div className="absolute inset-0 flex flex-col justify-end p-6 bg-black/50 space-y-4">
+                            <span className="text-black text-xs font-bold uppercase bg-white px-3 py-1 rounded inline-block w-fit border border-black shadow-[-3px_3px_0px_0px_rgb(0,0,0)]">
+                                {articles[0].category}
+                            </span>
+                            <h3 className="text-2xl text-white font-bold leading-tight">{articles[0].title}</h3>
+                            {renderAuthor(articles[0], true)}
+                        </div>
+                    </div>
+                    <div className=" w-full  overflow-hidden">
+                        <div className='h-[202px] p-3'>
 
-                <div className="">
+                            <Image
+                                src={articles[1].imageBg!}
+                                alt={articles[1].title}
+                                height={202}
+                                width={202}
+                                className="w-full h-full object-cover brightness-75"
+                            />
+                        </div>
+                        <div className="flex flex-col justify-end p-6 bg-white space-y-4">
+                            <span className="text-black text-xs font-bold uppercase bg-white px-3 py-1 rounded inline-block w-fit border border-black shadow-[-3px_3px_0px_0px_rgb(0,0,0)]">
+                                {articles[1].category}
+                            </span>
+                            <h3 className="text-2xl font-bold leading-tight">{articles[1].title}</h3>
+                            {renderAuthor(articles[1], true, 'black')}
+                        </div>
+                    </div>
+
+                    <div className="grid grid-cols-12">
+                        {articles.slice(2, 4).map((article, index) => (
+                            <div key={index} className="col-span-12 border-b border-black">
+                                <div className="relative w-full min-h-[268px] overflow-hidden">
+                                    <div className="w-full h-full" style={{ backgroundColor: article.bgColor }}></div>
+
+                                    <div className="absolute inset-0 flex flex-col justify-end p-6 bg-white border-t border-black space-y-4">
+                                        <span className="text-black text-xs font-bold uppercase bg-white px-3 py-1 rounded inline-block w-fit border border-black shadow-[-3px_3px_0px_0px_rgb(0,0,0)]">
+                                            {article.category}
+                                        </span>
+
+                                        {article.audio && (
+                                            <div className=" bg-white flex justify-between items-center min-h-[64px] text-black  border border-gray rounded-lg ">
+                                                <div className="px-4 flex">
+                                                    <div className="border-l-2 border-black pr-1 h-[24px]"></div>
+                                                    <div className="border-l-2 border-black pr-1 h-[24px]"></div>
+                                                </div>
+                                                <div className="flex justify-center items-center">
+                                                    <Audio />
+                                                </div>
+                                                <div className="px-4">-03:34</div>
+                                            </div>
+                                        )}
+
+                                        <h3 className="text-lg font-bold">{article.title}</h3>
+                                        {renderAuthor(article, true, 'black')}
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                    <div className="grid grid-cols-12 gap-4 bg-[#F4F1DE] px-8 h-[214px] border-b border-black">
+                        <div className="col-span-12 flex flex-col justify-center items-start">
+                            <h2 className="text-4xl font-bold">Il tuo supporto è fondamentale</h2>
+                            <a href="#" className="font-semibold text-black hover:underline flex justify-center items-center mt-4">
+                                Dai il tuo contributo →
+                            </a>
+                        </div>
+                    </div>
+                    <div className="grid grid-cols-12">
+                        {articles.slice(4, 8).map((article, index) => (
+                            <div key={index} className="col-span-12 border-b border-black">
+                                <div className="relative w-full min-h-[268px] overflow-hidden">
+                                    <div className="w-full h-full" style={{ backgroundColor: article.bgColor }}></div>
+
+                                    <div className="absolute inset-0 flex flex-col justify-end p-6 bg-white border-t border-black space-y-4">
+                                        <span className="text-black text-xs font-bold uppercase bg-white px-3 py-1 rounded inline-block w-fit border border-black shadow-[-3px_3px_0px_0px_rgb(0,0,0)]">
+                                            {article.category}
+                                        </span>
+
+                                        {article.audio && (
+                                            <div className=" bg-white flex justify-between items-center min-h-[64px] text-black  border border-gray rounded-lg ">
+                                                <div className="px-4 flex">
+                                                    <div className="border-l-2 border-black pr-1 h-[24px]"></div>
+                                                    <div className="border-l-2 border-black pr-1 h-[24px]"></div>
+                                                </div>
+                                                <div className="flex justify-center items-center">
+                                                    <Audio />
+                                                </div>
+                                                <div className="px-4">-03:34</div>
+                                            </div>
+                                        )}
+
+                                        <h3 className="text-lg font-bold">{article.title}</h3>
+                                        {renderAuthor(article, true, 'black')}
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                    <div className=" w-full  overflow-hidden">
+                        <div className="relative w-full p-3  overflow-hidden">
+                            <Image
+                                src={articles[8].imageBg!}
+                                alt={articles[8].title}
+                                height={358}
+                                width={358}
+                                className="w-full h-full object-cover brightness-75 "
+                            />
+                            <div className="absolute inset-0 flex flex-col justify-end p-6 space-y-4">
+
+                                <h3 className="text-2xl text-white leading-tight">Intervista a</h3>
+                                <h3 className="text-2xl text-white font-bold leading-tight">Mariangela Cassano</h3>
+
+                            </div>
+                        </div>
+
+                        <div className="flex flex-col justify-end p-6 bg-white space-y-4">
+                            <span className="text-black text-xs font-bold uppercase bg-white px-3 py-1 rounded inline-block w-fit border border-black shadow-[-3px_3px_0px_0px_rgb(0,0,0)]">
+                                {articles[8].category}
+                            </span>
+                            <h3 className="text-2xl font-bold leading-tight">{articles[8].title}</h3>
+                            {renderAuthor(articles[8], true, 'black')}
+                        </div>
+                    </div>
+
+
+
+                </div>
+                <div className="hidden md:block">
                     <div className="grid grid-cols-12 gap-4">
                         <div className="col-span-12 relative">
                             <div className="relative w-full h-[506px]  overflow-hidden">
@@ -281,7 +415,6 @@ export default function News() {
                         </div>
                     </div>
 
-                    {/* Support section (full width) */}
                     <div className="grid grid-cols-12 gap-4 bg-[#F4F1DE] px-8 h-[214px] border-b border-black">
                         <div className="col-span-12 flex justify-between items-center">
                             <h2 className="text-4xl font-bold">Il tuo supporto è fondamentale</h2>
@@ -291,7 +424,6 @@ export default function News() {
                         </div>
                     </div>
 
-                    {/* Fifth, Sixth, and Seventh articles */}
                     <div className="grid grid-cols-12 ">
                         {[4, 5, 6].map((index) => (
 
@@ -319,7 +451,6 @@ export default function News() {
                         ))}
                     </div>
 
-                    {/* Eight and Ninth articles */}
                     <div className="grid grid-cols-12 h-[482px]">
                         <div className="col-span-4 relative">
                             <div className="relative w-full h-full overflow-hidden">

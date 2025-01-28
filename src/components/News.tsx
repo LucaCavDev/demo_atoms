@@ -146,12 +146,26 @@ export default function News() {
                         ))}
                     </ul>
 
-                    <div className="flex items-center space-x-4">
+                    {/* <div className="flex items-center space-x-4">
                         <button className="flex items-center text-lg">
                             <span className="mr-1">Aa</span>
                         </button>
                         <button className="p-2 border border-black rounded shadow-[-3px_3px_0px_0px_rgb(0,0,0)]">
                             <img src="/assets/icons/image.svg" alt="Icon" className="w-6 h-6" />
+                        </button>
+                    </div> */}
+                    <div className="flex items-center space-x-4">
+                        <button className="flex items-center text-lg">
+                            <span className="mr-1">Aa</span>
+                        </button>
+                        <button className="p-2 border border-black rounded shadow-[-3px_3px_0px_0px_rgb(0,0,0)]">
+                            <Image
+                                src="/assets/icons/image.svg"
+                                alt="Icon"
+                                width={24}
+                                height={24}
+                                className="w-6 h-6"
+                            />
                         </button>
                     </div>
                 </div>

@@ -1,9 +1,10 @@
 'use client';
 
+import { Article } from '@/interfaces/interfaces';
 import Image from 'next/image';
 
 export default function NewsJustDesktop() {
-    const articles = [
+    const articles: Article[] = [
         {
             category: "INNOVAZIONE",
             title: "Gli anziani del Sicomoro spopolano su TikTok",
@@ -47,7 +48,7 @@ export default function NewsJustDesktop() {
         },
     ];
 
-    const renderAuthor = (article: any) => {
+    const renderAuthor = (article: Article) => {
         return (
             <div className="flex gap-2 mt-2 text-white">
                 <Image
@@ -75,7 +76,7 @@ export default function NewsJustDesktop() {
                             {articles.slice(0, 4).map((article, index) => (
                                 <div key={index} className="relative w-full h-full overflow-hidden border-b border-black">
                                     <Image
-                                        src={article.imageBg}
+                                        src={article.imageBg!}
                                         alt={article.title}
                                         fill
                                         className="w-full h-full object-cover brightness-50"

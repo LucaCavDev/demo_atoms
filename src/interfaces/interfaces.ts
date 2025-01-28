@@ -1,4 +1,4 @@
-interface Article {
+export interface Article {
     category: string;
     title: string;
     imageBg?: string;

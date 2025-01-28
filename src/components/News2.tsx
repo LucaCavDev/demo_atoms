@@ -1,9 +1,10 @@
 'use client';
 
+import { Article } from '@/interfaces/interfaces';
 import Image from 'next/image';
 
 export default function News2() {
-    const articles = [
+    const articles: Article[] = [
         {
             category: "IMPRESA SOCIALE",
             title: "La Kasbah mazarese nella quale si gusta la cultura araba",
@@ -46,7 +47,7 @@ export default function News2() {
         },
     ];
 
-    const renderAuthor = (article: any, inline: boolean = false) => {
+    const renderAuthor = (article: Article, inline: boolean = false) => {
         return (
             <div className={`flex gap-2 mt-2 ${inline ? 'flex-row items-center' : 'flex-col items-start'}`}>
                 <Image

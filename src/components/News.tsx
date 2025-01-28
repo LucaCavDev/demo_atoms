@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Audio from './Audio';
+import { Article } from '@/interfaces/interfaces';
 
 
 export default function News() {
@@ -18,7 +19,7 @@ export default function News() {
         "Welfare"
     ];
 
-    const articles = [
+    const articles: Article[] = [
         {
             category: "MIGRANTI",
             title: "Roccella Jonica, la Lampedusa che l'Italia ignora",
@@ -56,7 +57,6 @@ export default function News() {
         {
             category: "PROGETTO ARCA",
             title: "“Qui Odessa”, fotografie, progetti e solidarietà",
-            imageBg: null,
             bgColor: "#FF0000",
             author: "Di Redazione",
             date: "13 luglio 2022",
@@ -103,7 +103,7 @@ export default function News() {
     ];
 
 
-    const renderAuthor = (article: any, inline: boolean = false, textColor: string = 'white') => {
+    const renderAuthor = (article: Article, inline: boolean = false, textColor: string = 'white') => {
         return (
             <div className={`flex text-${textColor} gap-2 mt-2 ${inline ? 'flex-row items-center' : 'flex-col items-start'}`}>
                 <Image

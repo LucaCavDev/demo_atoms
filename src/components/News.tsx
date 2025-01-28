@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import Audio from './Audio';
 
 
 export default function News() {
@@ -156,7 +157,6 @@ export default function News() {
                 </div>
             </nav>
             <section className="w-full">
-                {/* Category Header */}
                 <div className="flex justify-between items-center bg-[#F4F4F4] h-[174px] py-[64px] px-[24px]">
                     <h1 className="text-3xl font-bold">Tutti i temi</h1>
                     <div className="flex flex-wrap gap-2 ">
@@ -184,7 +184,6 @@ export default function News() {
                 </div>
 
                 <div className="">
-                    {/* First article (full width) */}
                     <div className="grid grid-cols-12 gap-4">
                         <div className="col-span-12 relative">
                             <div className="relative w-full h-[506px]  overflow-hidden">
@@ -208,7 +207,6 @@ export default function News() {
                         </div>
                     </div>
 
-                    {/* Second and nested third and fourth articles */}
                     <div className="grid grid-cols-12">
                         <div className="md:col-span-6 relative">
                             <div className="relative w-full h-[845px] overflow-hidden">
@@ -249,13 +247,9 @@ export default function News() {
                                                     <div className='border-l-2 border-black pr-1 h-[24px]'></div>
                                                 </div>
                                                 <div className='flex justify-center items-center'>
-                                                    {/* {Array.from({ length: 50 }).map((_, index) => (
-                                                        <div
-                                                            key={index}
-                                                            className='border-l-2 border-black pr-1'
-                                                            style={{ height: `${Math.floor(Math.random() * (40 - 14 + 1)) + 14}px` }}
-                                                        ></div>
-                                                    ))} */}
+
+                                                    <Audio />
+
                                                 </div>
                                                 <div className='px-6'>
                                                     -0:34
@@ -274,7 +268,7 @@ export default function News() {
                                         fill
                                         className="w-full h-full object-cover brightness-75"
                                     />
-                                    <div className="absolute inset-0 flex flex-col justify-end p-8 bg-black/30 text-white space-y-6">
+                                    <div className="absolute inset-0 flex flex-col justify-center p-8 bg-black/30 text-white space-y-6">
                                         <span className="text-black text-xs font-bold uppercase bg-[#F1DADA] px-3 py-1 border border-black rounded shadow-[-3px_3px_0px_0px_rgb(0,0,0)] inline-block w-fit">
                                             {articles[3].category}
                                         </span>
@@ -348,13 +342,7 @@ export default function News() {
                                                 <div className='border-l-2 border-black pr-1 h-[24px]'></div>
                                             </div>
                                             <div className='flex justify-center items-center'>
-                                                {/* {Array.from({ length: 50 }).map((_, index) => (
-                                                    <div
-                                                        key={index}
-                                                        className='border-l-2 border-black pr-1'
-                                                        style={{ height: `${Math.floor(Math.random() * (40 - 14 + 1)) + 14}px` }}
-                                                    ></div>
-                                                ))} */}
+                                                <Audio />
                                             </div>
                                             <div className='px-6'>
                                                 -03:34
@@ -366,7 +354,7 @@ export default function News() {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-span-8 relative">
+                        <div className="col-span-8">
                             <div className="relative w-full h-full overflow-hidden">
                                 <Image
                                     src={articles[8].imageBg!}

@@ -6,7 +6,7 @@ import Image from "next/image";
 export default function Quote() {
 
 
-    return (<>
+    return (
         <div className="relative w-full h-[247px] overflow-hidden">
 
 
@@ -23,12 +23,10 @@ export default function Quote() {
                 </div>
                 <div className="col-span-10 flex flex-col justify-center">
                     <h2 className="font-bold">Essere troppo seri non è cosa molto seria</h2>
-                    <small className="italic">[detto africano]</small>
+                    <small className="italic">[Detto Africano]</small>
                 </div>
 
             </div>
         </div>
-        asd
-    </>
     );
 }

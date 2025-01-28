@@ -29,3 +29,26 @@ h2 {
 h3 {
   font-size: 24px;
 }
+
+h4 {
+  font-size: 18px;
+}
+
+@keyframes wave {
+  0% {
+    transform: scaleY(1);
+  }
+
+  50% {
+    transform: scaleY(1.5);
+  }
+
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+.animate-wave {
+  animation: wave 1s infinite ease-in-out;
+  animation-delay: calc(var(--i) * 0.1s);
+}

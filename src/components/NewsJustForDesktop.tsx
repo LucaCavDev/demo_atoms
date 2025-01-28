@@ -47,7 +47,7 @@ export default function NewsJustDesktop() {
         },
     ];
 
-    const renderAuthor = (article: any, inline: boolean = true) => {
+    const renderAuthor = (article: any) => {
         return (
             <div className="flex gap-2 mt-2 text-white">
                 <Image
@@ -120,7 +120,7 @@ export default function NewsJustDesktop() {
                                         {articles[4].category}
                                     </span>
                                     <h2 className="font-bold mt-2 text-2xl leading-tight">{articles[4].title}</h2>
-                                    {renderAuthor(articles[4], false)}
+                                    {renderAuthor(articles[4])}
                                 </div>
                             </div>
                         </div>

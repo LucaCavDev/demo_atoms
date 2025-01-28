@@ -3,7 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
   reactStrictMode: true, // Enables React strict mode
-  swcMinify: true,       // Enables SWC minification for better performance
+  //swcMinify: true,       // Enables SWC minification for better performance
 
   images: {
     domains: ["example.com"], // Add external domains for images if needed
